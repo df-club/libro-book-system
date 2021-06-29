@@ -90,8 +90,32 @@
         if (!email_reg.test(email)) {
             err_code = 10;
         }
+        password = $.md5(password);
         if (err_code == 0) {
-            
+            $(function () {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/signup_request.php",
+                    data: "username=" + username + "&password=" + password + "&email=" + email,
+                    success: function (result) {
+                        if (result == 0) {
+                            $(".signupBox .libro-logo").fadeOut();
+                            $(".signupSuccess").addClass("logged");
+                            setTimeout(() => {
+                                window.location.href = "/home";
+                            }, 1100);
+                        } else {
+                            $(".err_msg").text(result);
+                            $(".signupBox input[type=\"submit\"]").css("margin-top", "5px");
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e.status);
+                        console.log(e.responseText);
+                    }
+                });
+            });
         } else {
             $(".err_msg").text(err_msg[err_code - 1]);
             $(".signupBox input[type=\"submit\"]").css("margin-top", "5px");
