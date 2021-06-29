@@ -1,0 +1,159 @@
+body{
+    margin:0;
+    padding: 0;
+    background: #34495e;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.signupBox{
+    width: 320px;
+    height: 580px;
+    background-color: #ecf0f1;
+    color: #34495e;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10px;
+}
+.signupBox .libro-logo{
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    border:#fff 5px solid;
+    background-color: #fff;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+
+}
+
+.signupBox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.signupBox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.signupBox input[type="text"],input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #34495e;
+    background:transparent;
+    outline: none;
+    height: 40px;
+    color: #34495e;
+    font-size: 16px;
+}
+.signupBox input[name="email"]{
+    margin-bottom: 5px;
+}
+
+.signupBox input[type = "submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background:#fff;
+    color:#2c3e50;
+    font-size: 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+}
+.signupBox input[type = "submit"]:hover{
+    cursor: pointer;
+}
+.signupBox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color:darkgrey;
+}
+.signupBox a:hover{
+    color:#fff;
+}
+.signupBox span{
+    font-size: 12px;
+    line-height: 20px;
+    color:#e74c3c;
+    display: block;
+}
+.signupSuccess {
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    height: 560px;
+    flex-direction: column;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 30px;
+    position: absolute;
+    left: calc(50% - 150px);
+    top:calc(50% - 280px);
+}
+
+.logged{
+    display: flex;
+}
+
+.signupSuccess h2{
+    font-family: Helvetica;
+    font-size: 30px;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 40px;
+
+}
+.signupSuccess .circle{
+stroke-dasharray: 661;
+stroke-dashoffset: 0;
+}
+
+.logged .circle{
+    animation: circle 1s ease-in-out;
+}
+
+.signupSuccess .tick{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 0;
+}
+
+.logged .tick{
+    animation: tick .8s ease-out;
+}
+
+@keyframes circle{
+    from{
+        stroke-dashoffset: 661;
+    }
+    to{
+        stroke-dashoffset: 1322;
+    }
+}
+
+@keyframes tick{
+    from{
+        stroke-dashoffset: 200;
+    }to{
+        stroke-dashoffset: 0;
+    }
+}

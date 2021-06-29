@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro Management System</title>
+    <link rel="stylesheet" href="/style/signup.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/jquery.md5.js"></script>
+    <script>
+        $.ajax({
+            type: "GET",
+            url: "/api/checkLogged.php",
+            data: "checkLogged",
+            success: function (result) {
+                if (result == 0) window.location.href = "/home";
+            },
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="signupBox">
+        <img src="/libro.svg" alt="Libro" class="libro-logo">
+        <h1>SIGN UP LIBRO</h1>
+        <form action="" method="post">
+            <p>USERNAME</p>
+            <input type="text" name="username" placeholder="Enter Username">
+            <p>PASSWORD</p>
+            <input type="password" name="password" placeholder="Enter Password">
+            <p>CONFIRM</p>
+            <input type="password" name="confirm" placeholder="Confirm Password">
+            <p>E-MAIL</p>
+            <input type="text" name="email" placeholder="Enter E-mail">
+            <span class="err_msg"></span>
+            <input type="submit" name="" value="Sign Up">
+            <a href="/">Have an account? Sign in!</a>
+        </form>
+    </div>
+    <div class="signupSuccess">
+        <svg width="220" height="220">
+            <circle fill="none" stroke="#68E534" stroke-width="16" cx="110" cy="110" r="102" class="circle"
+                stroke-linecap="round" transform="rotate(-90 110 110)" />
+            <polyline fill="none" stroke="#68E534" stroke-width="18" points="48,117 95,156 167,76"
+                stroke-linecap="round" stroke-linejoin="round" class="tick" />
+        </svg>
+        <h2>Verification passed</h2>
+    </div>
+
+</body>
+<script>
+    $(".signupBox input[type=\"submit\"]").click(function () {
+        var username = $(".signupBox input[name='username']").val();
+        var password = $(".signupBox input[name='password']").val();
+        var confirm = $(".signupBox input[name='confirm']").val();
+        var email = $(".signupBox input[name='email']").val();
+        username = $.trim(username);
+        email = $.trim(email);
+        var usr_len = username.length;
+        var usr_wrong = /[`~!#$%^&*()+<>?:"{},\/;'[\]]/im;
+        var err_code = 0;
+        var err_msg = new Array("Illegal length of username.", "Illegal characters in username.", "Illegal length of password.", "Empty password.", "Empty username.", "Empty confirm password.", "Empty e-mail.", "Illegal length of confirm password.", "Unequal password and confirmation password.", "Illegal e-mail.");
+        if (usr_len < 4 || usr_len > 20) {
+            err_code = 1;
+        }
+        if (usr_wrong.test(username)) {
+            err_code = 2;
+        }
+        var pwd_len = password.length;
+        if (pwd_len < 6 || pwd_len > 30) {
+            err_code = 3;
+        }
+        if (pwd_len == 0) err_code = 4;
+        if (usr_len == 0) err_code = 5;
+        var confirm_len = confirm.length;
+        var email_len = email.length;
+        if (confirm_len == 0) err_code = 6;
+        if (email_len == 0) err_code = 7;
+        if (confirm_len < 6 || confirm_len > 30) {
+            err_code = 8;
+        }
+        if (confirm != password) err_code = 9;
+        var email_reg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+        if (!email_reg.test(email)) {
+            err_code = 10;
+        }
+        if (err_code == 0) {
+            
+        } else {
+            $(".err_msg").text(err_msg[err_code - 1]);
+            $(".signupBox input[type=\"submit\"]").css("margin-top", "5px");
+        }
+
+        return false;
+    });
+</script>
+
+</html>
