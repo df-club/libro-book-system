@@ -9,7 +9,7 @@ body{
 
 .loginbox{
     width: 320px;
-    height: 420px;
+    height: 480px;
     background-color: #ecf0f1;
     color: #34495e;
     top: 50%;
@@ -50,6 +50,10 @@ h1{
     margin-bottom: 20px;
 }
 
+.loginbox #libro_nc_id{
+    width: 100%;
+}
+
 .loginbox input[type="text"],input[type="password"]{
     border: none;
     border-bottom: 1px solid #34495e;
@@ -59,9 +63,9 @@ h1{
     color: #34495e;
     font-size: 16px;
 }
-.loginbox input[type="password"]{
+/* .loginbox input[type="password"]{
     margin-bottom: 5px;
-}
+} */
 
 .loginbox input[type = "submit"]{
     border: none;
@@ -96,14 +100,14 @@ h1{
     display: none;
     justify-content: center;
     align-items: center;
-    height: 400px;
+    height: 460px;
     flex-direction: column;
     width: 300px;
     background-color: #fff;
     border-radius: 30px;
     position: absolute;
     left: calc(50% - 150px);
-    top:calc(50% - 200px);
+    top:calc(50% - 230px);
 }
 
 .logged{
@@ -156,4 +160,12 @@ stroke-dashoffset: 0;
     }to{
         stroke-dashoffset: 0;
     }
+}
+
+div#nc_1__bg.nc_bg{
+    background:#d9dfe0;
+}
+
+.nc-lang-cnt b{
+    color:#fff;
 }
